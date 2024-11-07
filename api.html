@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat Facts API Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #cat-fact {
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #333;
+      border: 1px solid #ddd;
+      padding: 15px;
+      width: 80%;
+      max-width: 400px;
+      background-color: #f9f9f9;
+    }
+    #info {
+      margin-top: 30px;
+      font-size: 1em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Random Cat Fact</h1>
+<button onclick="fetchCatFact()">Get a Cat Fact</button>
+
+<div id="cat-fact"></div>
+
+<div id="info">
+  <h2>About the Cat Facts API</h2>
+  <p>The Cat Facts API provides random facts about cats, perfect for animal enthusiasts or as a fun addition to an application that needs lighthearted content.</p>
+  
+  <h3>Source</h3>
+  <p>We found this API on the <a href="https://catfact.ninja/">Cat Fact API website</a>.</p>
+  
+  <h3>Request Options and Parameters</h3>
+  <p>This example uses a simple GET request to <code>https://catfact.ninja/fact</code> with no additional parameters required. The API responds with a random fact about cats in JSON format.</p>
+  
+  <h3>Potential Applications</h3>
+  <ul>
+    <li>Creating a "fun facts" section on a pet-related website or mobile app.</li>
+    <li>Providing random animal facts in educational software for kids to make learning more engaging.</li>
+  </ul>
+</div>
+
+<script>
+  function fetchCatFact() {
+    fetch('https://catfact.ninja/fact')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('cat-fact').innerText = data.fact;
+      })
+      .catch(error => {
+        document.getElementById('cat-fact').innerText = 'An error occurred. Please try again later.';
+        console.error('Error fetching cat fact:', error);
+      });
+  }
+</script>
+
+</body>
+</html>
